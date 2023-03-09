@@ -2,9 +2,11 @@ body {
   font-family: Georgia, "Times New Roman", Times, serif;
   color: #5a6275;
 }
-.weather-app {
+.weather-app-wrapper {
   max-width: 600px;
   margin: 30px auto;
+}
+.weather-app {
   padding: 20px;
   border: 1px solid #dadde1;
   border-radius: 5px;
@@ -24,4 +26,22 @@ ul {
   margin: 0;
   padding: 0;
   margin-bottom: 20px;
+  text-transform: capitalize;
+}
+.weather-temperature img {
+  margin-right: 10px;
+  height: 64px;
+  width: 64px;
+}
+.weather-temperature strong {
+  color: #444444;
+  font-size: 64px;
+  font-weight: 100;
+  line-height: 1;
+}
+.weather-temperature span {
+  color: #444444;
+  position: relative;
+  font-size: 12px;
+  top: 30px;
 }
