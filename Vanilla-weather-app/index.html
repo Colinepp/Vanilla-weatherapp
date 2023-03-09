@@ -22,6 +22,25 @@
     <div class="bootstrap-container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
+          <form id="searchForm" class="mb-3">
+            <div class="row">
+              <div class="col-9">
+                <input
+                  type="search"
+                  placefolder="type a city"
+                  class="form-control"
+                  id="city-input"
+                  autocomplete="off"
+                  autofocus="on" />
+              </div>
+              <div class="col-3">
+                <input
+                  type="submit"
+                  value="search"
+                  class="btn btn-primary w-100" />
+              </div>
+            </div>
+          </form>
           <h1 id="city"></h1>
           <ul>
             <li id="date"></li>
@@ -31,9 +50,9 @@
             <div class="col-6">
               <div class="d-flex weather-temperature">
                 <img
-                  src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/070/526/original/weather-img.png?1678271177"
-                  alt="mostly cloudy"
-                  id="today-weather-icon" />
+                  src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png"
+                  alt="weather icon"
+                  id="today-icon" />
                 <strong id="currentTemp"></strong>
                 <span>°C |<a href="#">°F</a> </span>
               </div>
@@ -47,7 +66,9 @@
           </div>
         </div>
         <small>
-          <a href="https://github.com/Colinepp/Vanilla-weatherapp"
+          <a
+            href="https://github.com/Colinepp/Vanilla-weatherapp"
+            target="blank"
             >Open-source code</a
           >, by Coline Pechberty Pautal
         </small>
