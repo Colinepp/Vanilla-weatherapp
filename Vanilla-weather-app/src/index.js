@@ -25,7 +25,9 @@ function displayWeather(response) {
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = response.data.city;
   let temperatureElement = document.querySelector("#currentTemp");
-  temperatureElement.innerHTML = Math.round(response.data.temperature.current);
+  celsiusTemp = response.data.temperature.current;
+
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.condition.description;
   let humidityElement = document.querySelector("#humidity");
@@ -37,7 +39,7 @@ function displayWeather(response) {
   let iconElement = document.querySelector("#today-icon");
   iconElement.setAttribute(
     "src",
-    `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
   iconElement.setAttribute("alt", response.data.condition.description);
 }
@@ -54,7 +56,29 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-search("Berlin");
+let celsiusTemp = null;
 
 let form = document.querySelector("#searchForm");
 form.addEventListener("submit", handleSubmit);
+
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  fahrenheitlink.classList.remove("active");
+  celsiuslink.classList.add("active");
+  let temperatureElement = document.querySelector("#currentTemp");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+}
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  fahrenheitlink.classList.add("active");
+  celsiuslink.classList.remove("active");
+  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#currentTemp");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+}
+let fahrenheitlink = document.querySelector("#fahrenheit-link");
+fahrenheitlink.addEventListener("click", displayFahrenheitTemp);
+let celsiuslink = document.querySelector("#celsius-link");
+celsiuslink.addEventListener("click", displayCelsiusTemp);
+
+search("Berlin");
