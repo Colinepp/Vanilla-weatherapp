@@ -72,7 +72,6 @@ function getForecast(city) {
 function handleCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-input");
-  getForecast(cityInput.value);
 }
 
 console.log(city);
@@ -96,6 +95,7 @@ function displayWeather(response) {
     `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
   );
   iconElement.setAttribute("alt", response.data.condition.description);
+  getForecast(response.data.city);
 }
 function search(city) {
   let key = "6b4f0f84o6274ffd76c87903428ea4t0";
