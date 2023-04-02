@@ -73,7 +73,6 @@ function handleCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city-input");
 }
-
 console.log(city);
 function displayWeather(response) {
   let cityElement = document.querySelector("#city");
@@ -97,6 +96,7 @@ function displayWeather(response) {
   iconElement.setAttribute("alt", response.data.condition.description);
   getForecast(response.data.city);
 }
+
 function search(city) {
   let key = "6b4f0f84o6274ffd76c87903428ea4t0";
   let units = "metric";
@@ -109,6 +109,20 @@ function handleSubmit(event) {
   let cityInputElement = document.querySelector("#city-input");
   search(cityInputElement.value);
 }
+function showPosition(position) {
+  let key = "6b4f0f84o6274ffd76c87903428ea4t0";
+  let units = "metric";
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lat=${lat}&lon=${lon}&key=${key}&units=${units}`;
+  axios.get(apiUrl).then(displayWeather);
+}
+function currentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(showPosition);
+}
+let submitCurrentLocation = document.querySelector("#currentButton");
+submitCurrentLocation.addEventListener("click", currentLocation);
 
 let celsiusTemp = null;
 
